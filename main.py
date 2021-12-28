@@ -17,7 +17,7 @@ def run(path: str, size: int, progress_bar: sg.ProgressBar):
 if __name__ == "__main__":
     # Define the window's contents
     progress_bar = sg.ProgressBar(1, bar_color=("red", "white"), orientation='h', key='PROGRESS')
-    layout = [[sg.Text("Input pdf file"), sg.FileBrowse(file_types=("PDF", "*.pdf"), key="INPUT_FILE")],
+    layout = [[sg.Text("Input pdf file"), sg.FileBrowse(file_types=(("All PDF files", "*.pdf"), ), key="INPUT_FILE")],
               [sg.Text("Booklet size"), sg.Spin(initial_value=16, values=list(range(1, 1000)), key="SIZE")],
               [progress_bar],
               [sg.Button('Start'), sg.Button('Quit')]]
