@@ -21,7 +21,7 @@ jobs:
 
     - name: install requirements
       run: |
-        pip install -r requirements.txt
+        pip install -r build_requirements.txt
 
     - name: build
       run: |
