@@ -7,13 +7,25 @@ on:
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Package Application
-      uses: JackMcKew/pyinstaller-action-windows@main
+    - name: Set up Python 3.10
+      uses: actions/setup-python@v1
       with:
-        path: .
+        python-version: 3.10.1
+    - name: upgrade pip
+      run: |
+        pip install --upgrade pip wheel setuptools
+      shell: bash
+
+    - name: install requirements
+      run: |
+        pip install -r requirements.txt
+
+    - name: build
+      run: |
+        python -m pyinstaller --clean -y --dist ./dist/windows main.py
 
     - uses: actions/upload-artifact@v2
       with:
